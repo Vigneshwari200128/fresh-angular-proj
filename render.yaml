@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-chatbot
+    env: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: node dist/ai-chatbot/server/server.mjs
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
