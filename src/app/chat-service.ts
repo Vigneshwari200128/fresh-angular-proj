@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from '../environments/environment';  // Adjust path if your environments folder is different
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  private apiUrl = 'http://localhost:3000/chat';
-  private historyUrl = 'http://localhost:3000/chats';
+  private apiUrl = environment.apiBaseUrl + '/chat';
+  private historyUrl = environment.apiBaseUrl + '/chats';
 
   constructor(private http: HttpClient) {}
 
