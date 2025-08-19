@@ -2,7 +2,7 @@ import express from 'express';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
+import { CommonEngine } from '@angular/ssr/node';
 import { isMainModule } from '@angular/ssr/node';
 import bootstrap from './main.server';
 
@@ -27,7 +27,7 @@ app.get('*', (req, res, next) => {
       publicPath: browserDistFolder,
       providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
     })
-    .then((html) => res.send(html))
+    .then((html: string) => res.send(html))
     .catch(next);
 });
 
